@@ -20,8 +20,9 @@ class: inverse, center, middle
 # Introduction 
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE )
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE )
 library(tidyverse)
+theme_set(theme_minimal())
 ```
 
 >“Gender inequality is not only a pressing moral and social issue, but also a critical economic >challenge.”     — McKinsey Global Institute
@@ -167,13 +168,14 @@ data%>%
   geom_boxplot(aes(female_register_procedure, female_top_management/100,
                   group = cut_width(female_register_procedure, 2)))+
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))+
-  labs(title = "Relationship between  Start-up procedures to register a business(female) and female top manager",
-        x = "Start-up procedures to register a business(female)",
-        y = "Female top manager (% of firms)")
+  labs(x = "Start-up procedures to register a business(female)",
+       y = "Female top manager (% of firms)")
 ```
 
 ???
 Previous analysis proved the existence of the gender inequality, and showed a stagnant situation. Such situation set me thinking, wondering what relates to or causes the phenomenon. Therefore, shown below, I tested two possible related variables, but the output failed to give any enlightment. 
+
+---
 
 ## Relationship between High-technology exports and female top manager
 ```{r}
@@ -185,9 +187,8 @@ data%>%
   scale_x_continuous(labels = scales::percent_format(accuracy = 1))+
   geom_point(alpha = 1/2)+
   geom_smooth()+
-  labs(title = "Relationship between  High-technology exports and female top manager",
-        x = "High-technology exports (% of manufactured exports)",
-        y = "Female top manager (% of firms)")
+  labs(x = "High-technology exports (% of manufactured exports)",
+       y = "Female top manager (% of firms)")
 ```
 
 ???
