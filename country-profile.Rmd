@@ -59,7 +59,6 @@ most_recent <- single_iso %>%
 ```{r years}
 year <- single_iso %>%  
   distinct(year)
-year
 ```
 `r year$year` have data for `r my_country`.
 

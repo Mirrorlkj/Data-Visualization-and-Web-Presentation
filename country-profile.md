@@ -26,17 +26,6 @@ columns:
 
 ## For which years do we have data for Bangladesh?
 
-    ## # A tibble: 6 x 2
-    ## # Groups:   iso3 [1]
-    ##    year iso3 
-    ##   <dbl> <chr>
-    ## 1  2004 BGD  
-    ## 2  2006 BGD  
-    ## 3  2007 BGD  
-    ## 4  2011 BGD  
-    ## 5  2013 BGD  
-    ## 6  2014 BGD
-
 2004, 2006, 2007, 2011, 2013, 2014 have data for Bangladesh.
 
 ## How has HIV incidence changed over time in Bangladesh?
