@@ -26,13 +26,10 @@ class: inverse, center, middle
 
 
 
----
-class: center, middle
-
 &gt;“Gender inequality is not only a pressing moral and social issue, but also a critical economic &gt;challenge.”     — McKinsey Global Institute
 
 ---
-class: center, middle
+class: middle
 
 This report intends to explore the female representation in top management. 
 
@@ -40,7 +37,9 @@ This report intends to explore the female representation in top management.
 
 Four variables from the world bank database
 
-- High-technology exports (% of manufactured exports)
+--
+
+- High-technology exports (% of manufactured exports)--
 
 --
 
@@ -67,7 +66,8 @@ class: inverse, center, middle
 # Explore the data
 
 ---
-# Firms with female participation in ownership by year
+
+## Firms with female participation in ownership by year
 
 ![](world_bank_files/figure-html/ownership-1.png)&lt;!-- --&gt;
 
@@ -76,30 +76,16 @@ As shown below, the data start merely from the 21 century when the phenomenon ca
 
 ---
 
-# Firms with female top manager by year
+## Firms with female top manager by year
 
 ![](world_bank_files/figure-html/top manager-1.png)&lt;!-- --&gt;
-
-```
-## $x
-## [1] "year"
-## 
-## $y
-## [1] "% of firms"
-## 
-## $title
-## [1] "Firms with female top manager"
-## 
-## attr(,"class")
-## [1] "labels"
-```
 
 ???
 As like the female participation in ownership data, percentage of firms with female manager don't have apparent trend over the years concerned, but with a even lower average, fluctuating between 10% to 20%. Females are largely underrepresented in the top management.
 
 ---
 
-# Relationship between female participation in ownership and female top manager
+## Relationship between female participation in ownership and female top manager
 
 ![](world_bank_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
 
@@ -107,7 +93,25 @@ As like the female participation in ownership data, percentage of firms with fem
 Since neither the percentage of female in top mangement nor female participation in ownership alone indicate any trend along the years. Doubts arise whether these two variables are telling the same story. Covariance analysis is hereby given that demonstrates these two variables are positively related to each other. Where females appear more often as top managers, female participation in ownership is correspondingly higher. This result suggests the position of female in leadership is consistent across different measurements.
 
 ---
+## Relationship between Start-up procedures to register a business(female) and female top manager
 
+
+
+```
+## Warning: Removed 3 rows containing missing values (stat_boxplot).
+```
+
+![](world_bank_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+???
+Previous analysis proved the existence of the gender inequality, and showed a stagnant situation. Such situation set me thinking, wondering what relates to or causes the phenomenon. Therefore, shown below, I tested two possible related variables, but the output failed to give any enlightment. 
+
+## Relationship between High-technology exports and female top manager
+![](world_bank_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+???
+However, it could be just that the number or quality of dataset isn't good enough to reflect the reality. Besides, other variables may be included to give more insights.  
+---
 class: center, middle
 
 # Thanks!
@@ -118,6 +122,7 @@ Slides created via the R package
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
+"countIncrementalSlides": false,
 "highlightStyle": "github"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
