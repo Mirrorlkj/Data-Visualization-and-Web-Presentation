@@ -38,7 +38,7 @@ Four variables from the world bank database
 
 --
 
-- High-technology exports (% of manufactured exports)--
+- High-technology exports (% of manufactured exports)
 
 --
 
@@ -96,7 +96,7 @@ class: inverse, center, middle
 # Explore the data
 
 ---
-
+class: center, middle
 ## Firms with female participation in ownership by year
 
 ```{r ownership}
@@ -116,7 +116,7 @@ data %>%
 As shown below, the data start merely from the 21 century when the phenomenon came into the public attention. But the overall trend doesn't appear any upward nor downward trend over the period. Whatever the variation, less than half of the firms have female participated in the ownership.
 
 ---
-
+class: center, middle
 ## Firms with female top manager by year
 
 ```{r top manager}
@@ -136,7 +136,7 @@ data %>%
 As like the female participation in ownership data, percentage of firms with female manager don't have apparent trend over the years concerned, but with a even lower average, fluctuating between 10% to 20%. Females are largely underrepresented in the top management.
 
 ---
-
+class: center, middle
 ## Relationship between female participation in ownership and female top manager
 
 ```{r}
@@ -156,6 +156,7 @@ data%>%
 Since neither the percentage of female in top mangement nor female participation in ownership alone indicate any trend along the years. Doubts arise whether these two variables are telling the same story. Covariance analysis is hereby given that demonstrates these two variables are positively related to each other. Where females appear more often as top managers, female participation in ownership is correspondingly higher. This result suggests the position of female in leadership is consistent across different measurements.
 
 ---
+class: center, middle
 ## Relationship between Start-up procedures to register a business(female) and female top manager
 
 
@@ -176,8 +177,9 @@ data%>%
 Previous analysis proved the existence of the gender inequality, and showed a stagnant situation. Such situation set me thinking, wondering what relates to or causes the phenomenon. Therefore, shown below, I tested two possible related variables, but the output failed to give any enlightment. 
 
 ---
-
+class: center, middle
 ## Relationship between High-technology exports and female top manager
+
 ```{r}
 data%>%
   drop_na(hitech_export, female_top_management) %>%
