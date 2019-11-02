@@ -6,6 +6,7 @@ institute: "UChicago"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
+    css: [default, rladies, rladies-fonts]
     lib_dir: libs
     nature:
       countIncrementalSlides: false
@@ -25,7 +26,10 @@ library(tidyverse)
 theme_set(theme_minimal())
 ```
 
->“Gender inequality is not only a pressing moral and social issue, but also a critical economic >challenge.”     — McKinsey Global Institute
+
+
+> “Gender inequality is not only a pressing moral and social issue, but also a critical economic challenge.”   
+> — McKinsey Global Institute
 
 ---
 class: middle
@@ -56,6 +60,7 @@ Four variables from the world bank database
 Gender inequality is a commonplace talk of an old scholar. However, in recent years, the phenomenon is discussed under a new context - leadership in business. Incessant evidences suggest that the gender diversity contributes to the bussiness operation. To better understand the current development, this report analyzes four variables from the world bank database
 
 ```{r, include = FALSE}
+#write function to tidy data
 read_and_tidy <- function(file) {
   read_csv(file, skip = 4) %>%
  #select & filter data needed for analysis
@@ -82,6 +87,7 @@ read_and_tidy <- function(file) {
 ```
 
 ```{r, include = FALSE, cache = TRUE}
+#import data
 # silent the warning message
 economies <- dir(path = "data_world_bank", full.names = TRUE)
 
