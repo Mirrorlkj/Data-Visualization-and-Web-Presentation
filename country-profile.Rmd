@@ -1,12 +1,15 @@
 ---
 title: "Country Profile"
-output
-github_document:
+author: Kejing Li
+output:
+  github_document:
     toc: true
+    toc_depth: 2
+   
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$get(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 library(tidyverse)
 # install.packages("countrycode")
 library(countrycode)
@@ -25,54 +28,68 @@ The file `at_health_facilities.csv` contains a tidy dataset with four columns:
 
 
 ```{r import data}
-medians <- read_csv("at_health_facilities.csv",
-                na = c("-", "")) %>% 
-  janitor::clean_names() %>% 
-  group_by(iso3, year) %>% 
-  summarize(median_perc = median(age_15_17, age_20_34, na.rm = TRUE))  %>% 
+medians <- read_csv("data/at_health_facilities.csv",
+  na = c("-", "")
+) %>%
+  # install.packages("janitor")
+  janitor::clean_names() %>%
+  group_by(iso3, year) %>%
+  summarize(median_perc = median(age_15_17, age_20_34,
+                                 na.rm = TRUE)) %>%
   mutate(country_name = countrycode(iso3, "iso3c", "country.name"))
 ```
 
 
 ```{r customize, include = FALSE}
-my_iso3 <- "BGD" # can I make this a parameter?
-single_iso <- medians %>% 
-  filter(iso3 == my_iso3) 
-my_country <- single_iso %>% distinct(country_name) %>% pull(country_name)
-most_recent <- single_iso %>%  summarize(max_year = max(year)) %>% pull()
+single_iso <- medians %>%
+  filter(iso3 == "BGD")
+my_country <- single_iso %>%
+  distinct(country_name) %>%
+  pull(country_name)
+most_recent <- single_iso %>%
+  summarize(max_year = max(year)) %>%
+  pull()
 ```
 
 
 # Country Report: `r my_country`
 
-For which years do we have data for `r my_country`?
+## For which years do we have data for `r my_country`?
 
-```{years}
-single_iso %>%  
+```{r years}
+year <- single_iso %>%  
   distinct(year)
+year
 ```
+`r year$year` have data for `r my_country`.
 
-How has HIV incidence changed over time in `r my_country`?
+## How has HIV incidence changed over time in `r my_country`?
 
-```{r plot}
+```{r plot mycountry}
 plot_title <- glue::glue("Country: {my_country}")
-single_iso %>% 
-  ggplot(aes(x = year, y = median_perc)) %>% 
-  geom_point() %>% 
-  geom_line() %>% 
+single_iso %>%
+  ggplot(aes(x = year, y = median_perc)) +
+  geom_point() +
+  geom_line() +
+  labs(x = NULL, 
+       y = "HIV incidence (%)")+
   ggtitle(label = plot_title)
 ```
 
-How does `r my_country` compare in `r most_recent`?
+## How does `r my_country` compare in `r most_recent`?
 
-```{r plot}
+```{r plot comparison}
 plot_title <- glue::glue("Year: {most_recent}")
-medians %>% 
-  filter(year == most_recent) %>% 
-  ggplot(aes(x = fct_reorder(iso3, median_perc), y = median_perc)) +
-  geom_col() + 
-  geom_col(data = single_iso %>% filter(year == most_recent), fill = "dodgerblue") + 
-  labs(x = NULL, y = "HIV incidence (%)") +
+medians %>%
+  filter(year == most_recent) %>%
+  ggplot(aes(x = fct_reorder(iso3, median_perc),
+             y = median_perc)) +
+  geom_col() +
+  geom_col(data = single_iso %>%
+          filter(year == most_recent), 
+          fill = "dodgerblue") +
+  labs(x = NULL, 
+       y = "HIV incidence (%)") +
   ggtitle(label = plot_title)
 ```
 
