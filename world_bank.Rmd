@@ -169,14 +169,13 @@ class: center, top
 ```{r}
 data%>%
   drop_na(female_register_procedure, female_top_management) %>%
+  mutate(female_reg_cat = cut_width(female_register_procedure, 2)) %>%
   group_by(country)%>%
   ggplot()+
-  scale_x_continuous(limits = c(0, 15))+
-  geom_boxplot(aes(female_register_procedure, female_top_management/100,
-                  group = cut_width(female_register_procedure, 2)))+
+  geom_boxplot(aes(female_reg_cat, female_top_management/100))+
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))+
   labs(x = "Start-up procedures to register a business(female)",
-       y = "Female top manager (% of firms)")
+      y = "Female top manager (% of firms)") 
 ```
 
 ???
