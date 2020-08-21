@@ -1,4 +1,4 @@
-# hw05
+# Data Visualization and Web Presentation
 
 
 ## Required Package 
@@ -10,9 +10,8 @@ library(xaringan)
 ```
 
 ## Introduction
-This repo contains two class exercises:
 
-1. [country profile exercise](country-profile.md)
+1. [country profile visualization](country-profile.md)
 
 1. [world bank presentation](world_bank.html)
 
